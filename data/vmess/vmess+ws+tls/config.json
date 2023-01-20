@@ -1,0 +1,50 @@
+{
+    "log": {
+      "loglevel": "debug"
+    },
+    "dns": {
+      "servers": [
+        {
+          "tag": "tag-replace",
+          "address": "address-replace"
+        }
+      ]
+    },
+    "inbounds": [
+      {
+        "listen": "0.0.0.0",
+        "port": port-replace,
+        "protocol": "vmess",
+        "settings": {
+          "clients": [
+            {
+              "name": "vmess+ws+tls",
+              "uuid": "uuid-replace"
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "ws",
+          "security": "tls",
+          "tlsSettings": {
+            "serverName": "sni-replace",
+            "certificates": [
+              {
+                "certificateFile": "cert_path",
+                "keyFile": "key_path"
+              }
+            ]
+          },
+          "wsSettings": {
+            "maxEarlyData": 2048,
+            "earlyDataHeaderName": ""
+          }
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "protocol": "freedom"
+      }
+    ]
+}

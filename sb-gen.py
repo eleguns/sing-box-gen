@@ -13,30 +13,21 @@ class SingBoxGen :
         if network == 2:
              self.vless_protocols()
     def vmess_protocols(self):
-        configs_list = ['vmess+ws', 'vmess+ws+tls']
-        text = '\n'
-        for v, i in enumerate(os.listdir('/etc/sb-gen/data/vmess')):
-            text += f'{i}){v}'
-        text += '\nEnter the number of your own config:'
-        configs = int(input(text))
-        if configs not in [1, 2]:
+        config = int(input('\n1) vmess+ws\n2) vmess+ws+tls\n\nEnter your config number:'))
+        if config not in [1,2]:
             self.vmess_protocols()
-        self.run_protocol(configs_list)
+        if config == 1:
+            self.vmess_ws()
+        if config == 2:
+            self.vmess_ws_tls()
     def vless_protocols(self):
-        configs_list = ['vless+ws', 'vless+ws+tls']
-        text = '\n'
-        for v, i in enumerate(os.listdir('/etc/sb-gen/data/vless')):
-            text += f'{i}){v}'
-        text += '\nEnter the number of your own config:'
-        configs = int(input(text))
-        if configs not in [1, 2]:
+        config = int(input('\n1) vless+ws\n2) vless+ws+tls\n\nEnter your config number:'))
+        if config not in [1,2]:
             self.vless_protocols()
-        self.run_protocol(configs_list)
-    def run_protocol(self, config: str):
-        if 'tls' in config :
-            self.run_with_tls(config.replace('+tls', ''))
-        else :
-            self.run_without_tls(config)
+        if config == 1:
+            self.vless_ws()
+        if config == 2:
+            self.vless_ws_tls()
 
 
 
